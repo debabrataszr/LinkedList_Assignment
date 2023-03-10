@@ -5,16 +5,14 @@ public class LinkedList {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(70);
+        myFirstNode.setNext(mySecondNode);
+        mySecondNode.setNext(myThirdNode);
+        myThirdNode.setNext(null);
 
-        MyLinkedList object = new MyLinkedList();
-        object.addToFront(myFirstNode);
-        object.appendSort(myFirstNode,mySecondNode);
-        object.appendSort(mySecondNode,myThirdNode);
-
-        MyNode<Integer> mynewNode = new MyNode<>(40);
-        object.insertAfterParticular(mySecondNode,mynewNode);
-
-
-        object.printMyNodes();
+        if (myFirstNode.getNext().equals(mySecondNode) && mySecondNode.getNext().equals(myThirdNode)) {
+            System.out.println("Condition is " + true);
+        } else
+            System.out.println("Condition is " + false);
     }
 }
+
