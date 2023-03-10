@@ -36,15 +36,10 @@ public class MyLinkedList {
     }
 
 
-    public void searchNode(INode searchNode) {
-        INode tempNode = head;
-        while (!tempNode.getNext().equals(null)) {
-            if (tempNode.getKey().equals(searchNode.getKey())) {
-                System.out.println("Searched key = " + tempNode.getKey());
-                break;
-            }
-            tempNode = tempNode.getNext();
-        }
+    public void insertAfterParticular(INode previousNode, INode newNode) {
+        INode tempNode = previousNode.getNext();
+        previousNode.setNext(newNode);
+        newNode.setNext(tempNode);
     }
 
     public void printMyNodes() {
@@ -58,5 +53,4 @@ public class MyLinkedList {
         myNodes.append(tempNode.getKey());
         System.out.println(myNodes);
     }
-
 }
