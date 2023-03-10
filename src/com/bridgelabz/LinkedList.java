@@ -10,7 +10,10 @@ public class LinkedList {
         object.addToFront(myFirstNode);
         object.appendToLast(mySecondNode);
         object.appendToLast(myThirdNode);
-        object.popFirstNode();
+
+        INode removedValue = object.popLastNode();
+
+        System.out.println("Removed value = " +removedValue.getKey());
 
         object.printMyNodes();
     }

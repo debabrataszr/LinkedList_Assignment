@@ -9,19 +9,20 @@ public class MyLinkedList {
         this.head = null;
         this.tail = null;
     }
+
     public void addToFront(INode newNode) {
         if (this.tail == null) {
             this.tail = newNode;
         }
         if (this.head == null) {
             this.head = newNode;
-        }
-        else {
+        } else {
             INode tempNode = this.head;
             this.head = newNode;
             this.head.setNext(tempNode);
         }
     }
+
     public void appendToLast(INode newNode) {
         if (this.tail == null) {
             this.tail = newNode;
@@ -34,11 +35,17 @@ public class MyLinkedList {
         }
     }
 
-    public INode popFirstNode() {
-        INode tempNode = this.head;
-        this.head=head.getNext();
-        return tempNode;
+
+    public INode popLastNode() {
+        INode tempNode = head;
+        while (!tempNode.getNext().equals(tail)) {
+            tempNode = tempNode.getNext();
+        }
+        INode removedNode = tempNode.getNext();
+        tempNode.setNext(null);
+        return removedNode;
     }
+
     public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My Linked List Nodes : ");
         INode tempNode = head;
