@@ -33,15 +33,11 @@ public class MyLinkedList {
             this.tail = newNode;
         }
     }
-    public void insertMethodFirst(INode newNode) {
-        INode tempNode = this.head.getNext();
-        this.head.setNext(newNode);
-        newNode.setNext(tail);
-    }
-    public void insertMethodSecond(INode firstNode , INode nextNode) {
-        INode tempNode = firstNode.getNext();
-        firstNode.setNext(nextNode);
-        nextNode.setNext(tempNode);
+
+    public INode popFirstNode() {
+        INode tempNode = this.head;
+        this.head=head.getNext();
+        return tempNode;
     }
     public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My Linked List Nodes : ");
