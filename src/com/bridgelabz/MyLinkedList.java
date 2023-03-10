@@ -42,6 +42,13 @@ public class MyLinkedList {
         newNode.setNext(tempNode);
     }
 
+    public INode deleteAfterParticular(INode previousNode, INode delNode) {
+        INode tempNode = delNode.getNext();
+        previousNode.setNext(tempNode);
+        tempNode.setNext(null);
+        return tempNode;
+    }
+
     public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My Linked List Nodes : ");
         INode tempNode = head;
