@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 public class MyLinkedList {
-
     private INode head;
     private INode tail;
 
@@ -35,6 +34,44 @@ public class MyLinkedList {
         }
     }
 
+    public void insertMethodFirst(INode newNode) {
+        INode tempNode = this.head.getNext();
+        this.head.setNext(newNode);
+        newNode.setNext(tail);
+    }
+
+    public void insertMethodSecond(INode firstNode, INode nextNode) {
+        INode tempNode = firstNode.getNext();
+        firstNode.setNext(nextNode);
+        nextNode.setNext(tempNode);
+    }
+
+    public INode popFirstNode() {
+        INode tempNode = this.head;
+        this.head = head.getNext();
+        return tempNode;
+    }
+
+    public INode popLastNode() {
+        INode tempNode = head;
+        while (!tempNode.getNext().equals(tail)) {
+            tempNode = tempNode.getNext();
+        }
+        INode removedNode = tempNode.getNext();
+        tempNode.setNext(null);
+        return removedNode;
+    }
+
+    public void searchNode(INode searchNode) {
+        INode tempNode = head;
+        while (!tempNode.getNext().equals(null)) {
+            if (tempNode.getKey().equals(searchNode.getKey())) {
+                System.out.println("Searched key = " + tempNode.getKey());
+                break;
+            }
+            tempNode = tempNode.getNext();
+        }
+    }
 
     public void insertAfterParticular(INode previousNode, INode newNode) {
         INode tempNode = previousNode.getNext();
@@ -49,8 +86,19 @@ public class MyLinkedList {
         return tempNode;
     }
 
+    public void appendSort(INode previousNode, INode newNode) {
+        if ((int) previousNode.getKey() < (int) newNode.getKey()) {
+            this.tail.setNext(newNode);
+            this.tail = newNode;
+        } else {
+            INode tempNode = this.head;
+            this.head = newNode;
+            this.head.setNext(tempNode);
+        }
+    }
+
     public void printMyNodes() {
-        StringBuffer myNodes = new StringBuffer("My Linked List Nodes : ");
+        StringBuffer myNodes = new StringBuffer("My LinkedList Nodes : ");
         INode tempNode = head;
         while (tempNode.getNext() != null) {
             myNodes.append(tempNode.getKey());
